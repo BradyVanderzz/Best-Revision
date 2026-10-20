@@ -2,6 +2,7 @@
 # Imports #
 import random
 import os
+import sys
 import customtkinter as ctk
 
 
@@ -12,7 +13,8 @@ ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
 
 root = ctk.CTk()
-root.title("Revision Tool")
+root.title("Best Revision")
+root.iconbitmap("icon.ico")
 root.geometry("1200x800")
 
 
@@ -37,7 +39,7 @@ qListButton.pack(side="left", padx=50)
 HomeP = ctk.CTkFrame(All, fg_color="transparent") # Home page text
 HomeP.place(y=125, relwidth=1, relheight=1)
 
-TitleText = ctk.CTkLabel(HomeP, text="Welcome to the Revision Tool!", font=("Arial Black", 60)) # Home page title text
+TitleText = ctk.CTkLabel(HomeP, text="Welcome to Best Revision!", font=("Arial Black", 60)) # Home page title text
 TitleText.pack(padx=20, pady=30)
 
 IntroPara = ctk.CTkLabel(HomeP, text="This application is designed to help you revise.\n\nTo get started, click on the Questions & Answers button on the top bar and input your own questions and answers on every other line, and then do the same for all questions & answers.\nThese questions can then be answered as a quiz or as flashcards.", font=("Arial", 25), wraplength=1050) # Home page introduction paragraph
@@ -172,7 +174,11 @@ Ans = ""  # Current answer
 qText = ""  # Current question text
 fText = ""  # Current flashcard text
 
-base_dir = os.path.dirname(__file__)
+if getattr(sys, 'frozen', False):
+    base_dir = os.path.dirname(sys.executable)
+else:
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+
 fileDoc1 = os.path.join(base_dir, "Document1.txt")
 fileDoc2 = os.path.join(base_dir, "Document2.txt")
 fileDoc3 = os.path.join(base_dir, "Document3.txt")

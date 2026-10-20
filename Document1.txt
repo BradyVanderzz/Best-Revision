@@ -10,5 +10,5 @@ What is 58 plus 6
 64
 What is 4 squared
 16
-What is -5 squared
+What is (-5) squared
 25
